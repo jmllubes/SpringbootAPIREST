@@ -3,11 +3,15 @@ package com.example.springbootjparest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.Collection;
 
 @Entity
 public class Colegio {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "idcolegio")
     private int idcolegio;
@@ -17,8 +21,16 @@ public class Colegio {
     @Basic
     @Column(name = "color")
     private String color;
+    @JsonIgnore
     @OneToMany(mappedBy = "colegioByColegioIdcolegio")
     private Collection<Mesa> mesasByIdcolegio;
+
+    public Colegio(int idcolegio, String direccion, String color) {
+        this.idcolegio = idcolegio;
+        this.direccion = direccion;
+        this.color = color;
+    }
+    public Colegio(){}
 
     public int getIdcolegio() {
         return idcolegio;
