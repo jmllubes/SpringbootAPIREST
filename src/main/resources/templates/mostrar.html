@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+
+</head>
+<body>
+<p th:text="'Hello, Pau '" />
+
+<div class="navbar-collapse" id="navbarResponsive">
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="mostrarcolegios">Mostrar Colegios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="insertarcolegios">Insertar Colegios</a>
+        </li>
+
+    </ul>
+</div>
+
+<div class="col-lg-10 mt-5 mb-5">
+    <table id="example" class="table table-bordered" style="width: 100%">
+        <thead>
+        <tr>
+            <th>idcolegio</th>
+            <th>direccion</th>
+            <th>color</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="colegio : ${llista}">
+            <td th:text="${colegio.idcolegio}">Idcolegio</td>
+            <td th:text="${colegio.direccion}">Direccion</td>
+            <td th:text="${colegio.color}">Color</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
